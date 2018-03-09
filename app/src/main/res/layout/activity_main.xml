@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.kw.sun_h.google_login.MainActivity">
+
+    <ImageButton
+        android:id="@+id/googleSignin"
+        android:layout_width="500px"
+        android:layout_height="wrap_content"
+        android:src="@drawable/google_signin_image"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/googleLogin"
+        android:layout_width="500px"
+        android:layout_height="wrap_content"
+        android:src="@drawable/google_login_image"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:onClick="onClick"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
