@@ -9,6 +9,16 @@ buildscript {
 
         //Google Login
         classpath 'com.google.gms:google-services:3.2.0'
+        //Kakao Login
+        /*compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        testCompile'junit:junit:4.12'
+        androidTextCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.suppert',module: 'support-annotations'
+        })
+        compile 'com.android.support:appcompat-v7:25.3.1'
+        compile group: 'com.kakao.sdk',name: 'usermgmt', version: project.KAKAO_SDK_VERSION*/
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -20,6 +30,9 @@ allprojects {
 
         //Google Login
         maven { url "https://maven.google.com" }
+        //Kakao Login
+        mavenCentral()
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/'}
     }
 }
 

@@ -3,11 +3,14 @@ package com.kw.sun_h.google_login;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageInstaller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodSession;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+
 
 public class MainActivity extends Activity implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = "MainActivity";
@@ -30,7 +34,6 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
         setContentView(R.layout.activity_main);
 
         gLogin = (ImageButton)findViewById(R.id.googleLogin);
-        text = (TextView)findViewById(R.id.text);
     }
 
     public void onClick(View v)
@@ -60,7 +63,6 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Log.e("superdoird", "111111111111111111111111111111");
         //구글 연결
         if (!mGoogleApiClient.isConnected() || Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) == null) {
             //연결 실패
@@ -78,27 +80,23 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                 //디스플레이 이름 :currentPerson.getDisplayName());
                 //디스플레이 아이디 : currentPerson.getId());
                 userName = currentPerson.getDisplayName();
-                text.setText(userName);
             }
 
             //로그인 액티비티로 이동
             Intent intent = new Intent(this, LoginActivity.class);
             intent.putExtra("NAME", userName);
             startActivity(intent);
-
-
         }
     }
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.e("superdoird", "2222222222222222222222");
+
     }
 
     //연결 실패 시
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.e("superdoird", "33333333333333333333");
         if (connectionResult.hasResolution()) {
             Log.e(TAG,
                     String.format(
@@ -114,6 +112,4 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
             Toast.makeText(getApplicationContext(), "이미 로그인 중", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }
